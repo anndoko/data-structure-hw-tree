@@ -13,27 +13,34 @@ int main() {
     int i;
     
     //  30% credit
-    CompleteBinaryTree cbt(8);
-    for(i=0;i<8;i++){
+    CompleteBinaryTree cbt(8);  // build a new tree cbt
+    for(i = 0; i < 8; i++){     // insert numbers 0~7
         cbt.Insert(i);
     }
-    cbt.inorder();
+    cbt.inorder();  // do inorder traversal
     
     // 30% credit
-    int d[8]={3, 7, 11, 6, 37, 28, 1, 4};
+    int d[8] = {3, 7, 11, 6, 37, 28, 1, 4};    // an input array
     BST bst;
-    for (i=0;i<8;i++) bst.Insert(d[i]);
-    bst.inorder();
+    for(i = 0; i < 8; i++){
+        bst.Insert(d[i]);   // insert the input array
+    }
+    bst.inorder();  // do inorder traversal
+
     
     // 40% credit
-    MaxHeap mh(8); int x;
-    for(i=0;i<8;i++) mh.Insert(i);
-    mh.inorder();
+    MaxHeap mh(8); int x;       // build a new max heap mh
+    for(i = 0; i < 8; i++){    // insert numbers 0~7
+        mh.Insert(i);
+    }
+    mh.inorder();   // do inorder traversal
     
     cout << "MaxHeap DeleteMax" <<endl;
-    for(int i=0;i<8;i++)  cout<< *mh.DeleteMax(x) <<" ";
+    for(i = 0; i < 8; i++){
+        cout<< *mh.DeleteMax(x) <<" "; // print the deleted keys
+    }
     
-    //  10% other tree you can implement from the lecture notes
+    //  10%
 
     return 0;
 }
