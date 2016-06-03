@@ -101,7 +101,7 @@ public:
 */
 class WinnerTree:public CompleteBinaryTree{
 public:
-    WinnerTree(int sz=DefaultSize):CompleteBinaryTree(sz){};
+    WinnerTree(int sz = DefaultSize):CompleteBinaryTree(sz){};
 };
 
 #endif /* oopTree_hpp */
