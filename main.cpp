@@ -35,7 +35,7 @@ int main() {
     }
     mh.inorder();   // do inorder traversal
     
-    cout << "MaxHeap DeleteMax" <<endl;
+    cout << "MaxHeap DeleteMax" << endl;
     for(i = 0; i < 8; i++){
         cout<< *mh.DeleteMax(x) <<" "; // print the deleted keys
     }

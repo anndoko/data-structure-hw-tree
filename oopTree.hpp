@@ -10,28 +10,39 @@
 #include <stdio.h>
 #include <iostream>
 using namespace std;
-enum Boolean {FALSE,TRUE};
-const int DefaultSize=20;
+enum Boolean {FALSE, TRUE};     // Enumeration
+const int DefaultSize = 20;
 
-class MaxPQ{
+/* 
+--------------- class MaxPQ ---------------
+*/
+class MaxPQ{    // priority queue
 public:
-    virtual void Insert(const int) = 0;// pure virtual function
+    virtual void Insert(const int) = 0;     // pure virtual function
     virtual int *DeleteMax(int&) = 0;
 };
 
+/*
+--------------- class SearchStruct ---------------
+*/
 class SearchStruct{
 public:
-    virtual Boolean Insert(const int) = 0; // pure virtual functions
+    virtual Boolean Insert(const int) = 0;  // pure virtual functions
     virtual int* Delete(int &) = 0;
     virtual Boolean Search(const int) = 0;
 };
 
+/*
+--------------- class BinaryTree ---------------
+*/
 class BinaryTree {
+
 public:
-    virtual void inorder(); // driver
-    BinaryTree(){root = 0;} // constructor
+    virtual void inorder();     // driver
+    BinaryTree(){root = 0;}     // constructor
+
 protected:
-    class BinaryTreeNode{ // nested class
+    class BinaryTreeNode{       // nested class
     public:
         int data;
         BinaryTreeNode *LeftChild;
@@ -41,8 +52,10 @@ protected:
     virtual void inorder(BinaryTreeNode *);
 };
 
-class BST:public SearchStruct, public BinaryTree{
-    //multiple inheritance
+/*
+--------------- class BST ---------------
+*/
+class BST:public SearchStruct, public BinaryTree{   //multiple inheritance
 public:
     BST() {root = 0;};
     Boolean Insert(const int);
@@ -50,33 +63,42 @@ public:
     Boolean Search(const int) {return TRUE;};
 };
 
+/*
+--------------- class CompleteBinaryTree ---------------
+*/
 class CompleteBinaryTree:public BinaryTree{
 public:
-    virtual void inorder(); // driver
-    CompleteBinaryTree(int sz=DefaultSize):MaxSize(sz), n(0){
+    virtual void inorder();     // driver
+    CompleteBinaryTree(int sz = DefaultSize):MaxSize(sz), n(0){
         tree = new int[MaxSize+1];
-        cout <<"Complete Binary Tree"<<endl;
+        cout << "Complete Binary Tree" << endl;
     };
     void Insert(int);
+
 protected:
     int *tree, MaxSize, n;
     virtual void inorder(int); // hides BinaryTree::inorder(BinaryTreeNode*)
 };
 
-class MaxHeap:public MaxPQ, public CompleteBinaryTree{
-    // multiple inheritance
+/*
+--------------- class MaxHeap ---------------
+*/
+class MaxHeap:public MaxPQ, public CompleteBinaryTree{   // multiple inheritance
 public:
-    MaxHeap(int sz=DefaultSize):CompleteBinaryTree(sz+1){
-        heap=tree;
-        cout <<"MaxHeap"<<endl;
+    MaxHeap(int sz = DefaultSize):CompleteBinaryTree(sz + 1){
+        heap = tree;
+        cout << "MaxHeap" << endl;
     };
     virtual void Insert(const int);
     virtual int *DeleteMax(int&) ;
     int *heap;
-    void HeapEmpty(){cout <<"The heap is empty"<<endl;}
-    void HeapFull(){cout <<"The heap is full"<<endl;}; // heap is full
+    void HeapEmpty(){cout << "The heap is empty." << endl;} // empty heap
+    void HeapFull(){cout << "The heap is full." << endl;}; // full heap
 };
 
+/*
+--------------- class WinnerTree ---------------
+*/
 class WinnerTree:public CompleteBinaryTree{
 public:
     WinnerTree(int sz=DefaultSize):CompleteBinaryTree(sz){};
